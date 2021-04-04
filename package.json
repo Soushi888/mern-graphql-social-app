@@ -1,8 +1,9 @@
 {
   "name": "mern-social-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Social Media App made with MongoDB, ExpressJS, nodeJS, grapheQL and ReactJS.",
   "main": "index.js",
+  "repository": "/",
   "scripts": {
     "start": "nodemon index.js"
   },
@@ -11,13 +12,14 @@
   "license": "ISC",
   "dependencies": {
     "apollo-server": "^2.22.2",
+    "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
     "graphql": "^15.5.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.3",
     "prettier": "^2.2.1"
   },
   "devDependencies": {
-    "graphql-tag": "^2.11.0",
     "nodemon": "^2.0.7"
   }
 }
