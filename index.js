@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: ({ req }) => ({ req }),
 });
 
 mongoose
