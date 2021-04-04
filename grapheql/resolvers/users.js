@@ -2,6 +2,7 @@ const User = require("../../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { UserInputError } = require("apollo-server");
+const { validateRegisterInput } = require("../../utils/validators");
 
 module.exports = {
   Mutation: {
@@ -10,7 +11,16 @@ module.exports = {
       { registerInput: { username, email, password, confirmPassword } }
     ) {
       // TODO Validate user data
-      // TODO Makes sure user doesnt already exist
+      const { valid, errors } = validateRegisterInput(
+        username,
+        email,
+        password,
+        confirmPassword
+      );
+      if (!valid) {
+        throw new UserInputError("Errors", { errors });
+      }
+
       const user = await User.findOne({ username });
       if (user) {
         throw new UserInputError("email already in the database", {
