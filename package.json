@@ -5,6 +5,7 @@
   "main": "index.js",
   "repository": "/",
   "scripts": {
+    "serve": "node index.js",
     "start": "nodemon index.js"
   },
   "keywords": [],
