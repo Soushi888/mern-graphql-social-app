@@ -36,7 +36,13 @@ module.exports = {
         createdAt: new Date().toISOString(),
       });
 
-      return await newPost.save();
+      const post = await newPost.save();
+
+      await context.pubsub.publish("NEW_POST", {
+        newPost: post,
+      });
+
+      return post;
     },
 
     async deletePost(_, { postId }, context) {
@@ -72,6 +78,13 @@ module.exports = {
       } else {
         throw new UserInputError("Post not found");
       }
+    },
+  },
+  Subscription: {
+    newPost: {
+      subscribe: (_, __, { pubsub }) => {
+        return pubsub.asyncIterator("NEW_POST");
+      },
     },
   },
 };
