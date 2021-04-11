@@ -36,7 +36,7 @@ const typeDefs = gql`
     email: String!
   }
   type Query {
-    getPosts(chrono: Boolean): [Post]
+    getPosts: [Post]
     getPost(postId: ID): Post!
   }
   type Mutation {
