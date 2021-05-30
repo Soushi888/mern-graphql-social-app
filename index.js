@@ -18,7 +18,7 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    server.listen({ port: process.env.PORT }).then((res) => {
+    server.listen({ port: process.env.PORT || 5000 }).then((res) => {
       console.log(`Server running at ${res.url}`);
     });
   });
